@@ -1,0 +1,28 @@
+spring:
+    application:
+        name: ms-string-provider
+    datasource:
+        password: postgres
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+    jpa:
+        properties:
+            hibernate:
+                default_schema: demo
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+    mvc:
+        view:
+            suffix: .html
+    thymeleaf:
+        cache: false
+        encoding: UTF-8
+        mode: HTML
+        prefix: file:src/main/resources/templates/
+    web:
+        resources:
+            cache:
+                period: 0
+            static-locations: file:src/main/resources/static/
+server:
+    port: 8080

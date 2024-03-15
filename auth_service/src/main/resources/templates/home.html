@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragments/general.html :: headFragment}"></head>
+
+<body>
+    <div class="home-container">
+        <h1 class="login-title">Login</h1>
+        <button onclick="location.href='login'" type="button" class="btn btn-primary">Clicca qui per loggarti</button>
+    </div>
+    <div class="home-container">
+        <h1 class="login-title">Registrati</h1>
+        <button onclick="location.href='registration'" type="button" class="btn btn-primary">Clicca qui per registrarti</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+<div th:if="${registration == true}">
+    <h6 class="alert alert-primary" role="alert" th:text="${registrationEmailMssg}"></h6>
+    <br>
+    <a th:href="@{'/user/register/'+ ${authToken}}">Clicca qui</a>
+</div>
+
+
+</body>
+</html>

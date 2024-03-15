@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/general.html :: headFragment}"></head>
+
+
+<body>
+    <div class="login-container">
+        <h1 class="login-title">Enter your Credentials to Sign in</h1>
+
+<!--        <p th:if="${loginError}" class="error">Wrong user or password</p>-->
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="usernameInput">Username</label>
+                <input type="text" name="username" class="form-control" id="usernameInput" aria-describedby="usernameHelp" placeholder="Enter username" required >
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input type="password" name="password" class="form-control" id="passwordInput" placeholder=" Enter password" required >
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div th:if="${registrationSuccess == true}">
+            <h6 class="alert alert-primary" role="alert" th:text="${registrationEmailMssg}"></h6>
+        </div>
+    </div>
+</body>
+</html>

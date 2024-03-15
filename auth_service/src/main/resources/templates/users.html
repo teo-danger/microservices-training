@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/general.html :: headFragment}"></head>
+
+<body>
+    <h1>Lista utenti registrati</h1>
+
+<!--    <h6 sec:authentication="username"></h6>-->
+    <h4 th:text="@{'Utente ' +  ${#authentication.principal.username}}"></h4>
+
+    <div sec:authorize="hasRole('ADMIN')">
+        <br>
+        <button class="btn btn-primary btn-sm" onclick="location.href='/newUser'">Nuovo Utente</button>
+        <br>
+    </div>
+    <br>
+    <div th:if="${users.isEmpty()}">
+        <h3>Non sono presenti utenti</h3>
+    </div>
+    <div th:if="${!users.isEmpty()}">
+        <table class="table table-hover table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Roles</th>
+                <th scope="col">Active</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user, iterator : ${users}">
+                <th th:text="${iterator.index + 1}"></th>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <div th:each="role:${user.roles}">
+                        <span th:text="${#strings.replace(role.name + ' ','ROLE_','')}"></span>
+                    </div>
+                </td>
+                <td th:text="${user.flagAttivo}"></td>
+                <td itemid="Actions">
+                    <button type="button" class="btn btn-danger btn-sm">DEL</button>
+                    <button type="button" class="btn btn-primary btn-sm">EDIT</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+</html>

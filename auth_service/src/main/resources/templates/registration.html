@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/general.html :: headFragment}"></head>
+
+<body>
+  <h1>Registrati</h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <form action="#" th:action="@{user/register}" th:object="${user}" method="post">
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputFirstName"></label>
+        <input th:field="${user.firstName}"  type="text" class="form-control" placeholder="Inserisci il tuo nome..." id="inputFirstName" required>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputLastName"></label>
+        <input th:field="${user.lastName}"  type="text" class="form-control" placeholder="Inserisci il tuo cognome..." id="inputLastName" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="username"></label>
+        <input th:field="${user.username}"  type="text" class="form-control" placeholder="Crea il tuo username..." id="username" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="email"></label>
+        <input th:field="${user.email}"  type="email" class="form-control" id="email" placeholder="Inserisci la tua email..." required>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="checkEmail"></label>
+        <input th:field="${user.checkEmail}"  type="email" class="form-control" id="checkEmail" placeholder="Conferma la tua email..." required>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">Registrati</button>
+    <button type="reset" class="btn btn-danger" onclick="location.href='home'">Annulla</button>
+  </form>
+</body>
+</html>
